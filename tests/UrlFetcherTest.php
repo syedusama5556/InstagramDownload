@@ -26,6 +26,7 @@ class UrlFetcherTest extends TestCase {
    * @param string $type
    */
   public function testDownloaderFetcher(string $url, string $type) {
+    $_SERVER['HTTP_USER_AGENT'] = 'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:55.0) Gecko/20100101 Firefox/55.0';
     $dl = new InstagramDownload($url);
     $this->assertEquals($type, $dl->getType());
     $url = $dl->getDownloadUrl(false);
