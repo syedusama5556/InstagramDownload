@@ -123,10 +123,6 @@ class InstagramDownload {
     curl_setopt($curl, CURLOPT_FOLLOWLOCATION, true);
     curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
     curl_setopt($curl, CURLOPT_TIMEOUT, 15);
-    /** @noinspection CurlSslServerSpoofingInspection */
-    curl_setopt($curl, CURLOPT_SSL_VERIFYHOST, false);
-    /** @noinspection CurlSslServerSpoofingInspection */
-    curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, false);
 
     if (!empty($_SERVER['HTTP_USER_AGENT'])) {
       curl_setopt($curl, CURLOPT_USERAGENT, $_SERVER['HTTP_USER_AGENT']);
