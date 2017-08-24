@@ -1,16 +1,18 @@
-# InstagramDownload class
+# InstagramDownload - [Instagram photo and Video Downloader](https://downloadgram.com).
 
-How many times you tried download that booty pic or awesome #nofilter or #travel photo on Instagram but had to go through hoops to save that file? This class can give you the download URL of Instagram photos and videos.
+Modernized version of your favorite Instagram Photo and video download helper class. If you are looking for the legacy version, [see here](https://github.com/Ayesh/InstagramDownload/tree/1.0). 
 
 I wrote this class mainly for my [online Instagram photo and video downloader] [1], but I thought share this piece for your own extensions.
 
-  - Validates Instagram URL (domain validation, URL path validation)
-  - Uses OG properties to detect the image and video URL
-  - (Somewhat) verbose error reporting
+  - Validates Instagram URL (domain validation, URL path validation).
+  - Uses OG properties to detect the image and video URL.
+  - Verbose error reporting with proper exceptions.
+  - Full unit tests
+  - No dependencies other than PHP curl extension (which is most likely enabled by already)
   
 
 ### Requirements
-* PHP 5
+* PHP 7.1
 * CURL
 * Unicorn blood
 
@@ -18,24 +20,52 @@ I wrote this class mainly for my [online Instagram photo and video downloader] [
 ### Thanks to:
 * [MetaData][2] - Meta data parsing regex and curl class.
 
-### Usage
+### Installation
 
+**With composer**
+Install the library by running the following in your project. 
+```bash
+composer require ayesh/instagram-download
+```
+**Without composer**
+Download the zip file from Github, and configure your autoload handler to autoload PSR-4 `Ayesh\InstagramDownload` namespace from the downloaded contents `src` directory. 
+
+You could also manually require the file. Requires a certain amount of guilty feeling because it's 2017 and you are not using a decent autoload mechanism. 
+
+```php 
+require_once 'src/InstagramDownload.php'
+```
+
+### Usage
 ```php
 <?php
-require_once 'InstagramDownload.class.php';
+use Ayesh\InstagramDownload\InstagramDownload;
 $url = 'http://instagram.com/p/tmwAlCGygb/';
 
-$client = new InstagramDownload($url);
-$url = $client->downloadUrl(); //Returns download URL.
-$url = $client->downloadUrl(TRUE); //Returns download URL, with query parameters that downloads the image directly to browser.
-
-$error = $client->getError(); // Returns error message's ($client->error_code) text error, if an error occurred.
-
-$type = $client->type(); // Returns (string) 'image' or (string) video if an image or video was sucessfully extracted
-
+try {
+  $client = new InstagramDownload($url);
+  $url = $client->getDownloadUrl(); // Returns the download URL.
+  $type = $client->getType(); // Returns "image" or "video" depending on the media type.
+}
+catch (\InvalidArgumentException $exception) {
+  /*
+   * \InvalidArgumentException exceptions will be thrown if there is a validation 
+   * error in the URL. You might want to break the code flow and report the error 
+   * to your form handler at this point.
+   */
+  $error = $exception->getMessage();
+}
+catch (\RuntimeException $exception) {
+  /*
+   * \RuntimeException exceptions will be thrown if the URL could not be 
+   * fetched, parsed, or a media could not be extracted from the URL. 
+   */
+  $error = $exception->getMessage();
+}
 ```
 
 
 [1]:http://downloadgram.com
 [2]:https://github.com/baj84/MetaData
+
 
