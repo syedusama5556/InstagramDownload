@@ -1,5 +1,7 @@
 # InstagramDownload - [Instagram photo and Video Downloader](https://downloadgram.com).
 
+[![Travis](https://travis-ci.org/Ayesh/InstagramDownload.svg?branch=2.x&style=flat-square)](https://travis-ci.org/Ayesh/InstagramDownload)
+
 Modernized version of your favorite Instagram Photo and video download helper class. If you are looking for the legacy version, [see here](https://github.com/Ayesh/InstagramDownload/tree/1.0). 
 
 I wrote this class mainly for my [online Instagram photo and video downloader] [1], but I thought share this piece for your own extensions.
