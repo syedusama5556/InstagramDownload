@@ -14,9 +14,8 @@ class InstagramDownload {
   private const INSTAGRAM_DOMAIN = 'instagram.com';
 
   /**
-   * InstagramDownload constructor.
-   *
    * @param string $url
+   *
    * @throws \InvalidArgumentException
    */
   public function __construct(string $url) {
@@ -53,7 +52,7 @@ class InstagramDownload {
    * @return string
    * @throws \RuntimeException
    */
-  public function getDownloadUrl($force_dl = TRUE): string {
+  public function getDownloadUrl(bool $force_dl = TRUE): string {
     if (!$this->download_url) {
       $this->process();
     }
@@ -70,7 +69,7 @@ class InstagramDownload {
    */
   private function process(): void {
     $this->fetch($this->input_url);
-    if (!is_array($this->meta_values)) {
+    if (!\is_array($this->meta_values)) {
       throw new \RuntimeException('Error fetching information. Perhaps the post is private.', 3);
     }
     if (!empty($this->meta_values['og:video'])) {
@@ -93,7 +92,7 @@ class InstagramDownload {
    * @throws \InvalidArgumentException
    */
   private function validateUrl($url) {
-    $url = parse_url($url);
+    $url = \parse_url($url);
     if (empty($url['host'])) {
       throw new \InvalidArgumentException('Invalid URL');
     }
@@ -108,8 +107,8 @@ class InstagramDownload {
       throw new \InvalidArgumentException('No image or video found in this URL');
     }
 
-    $args = explode('/', $url['path']);
-    if (!empty($args[1]) && $args[1] === 'p' && isset($args[2], $args[2][4]) && !isset($args[2][255])) {
+    $args = \explode('/', $url['path']);
+    if (!empty($args[1]) && $args[1] === 'p' && isset($args[2][4]) && !isset($args[2][255])) {
       return $args[2];
     }
 
@@ -117,20 +116,20 @@ class InstagramDownload {
   }
 
   private function fetch($URI) {
-    $curl = curl_init($URI);
+    $curl = \curl_init($URI);
 
-    curl_setopt($curl, CURLOPT_FAILONERROR, true);
-    curl_setopt($curl, CURLOPT_FOLLOWLOCATION, true);
-    curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
-    curl_setopt($curl, CURLOPT_TIMEOUT, 15);
+    \curl_setopt($curl, \CURLOPT_FAILONERROR, true);
+    \curl_setopt($curl, \CURLOPT_FOLLOWLOCATION, true);
+    \curl_setopt($curl, \CURLOPT_RETURNTRANSFER, true);
+    \curl_setopt($curl, \CURLOPT_TIMEOUT, 15);
 
     if (!empty($_SERVER['HTTP_USER_AGENT'])) {
-      curl_setopt($curl, CURLOPT_USERAGENT, $_SERVER['HTTP_USER_AGENT']);
+      \curl_setopt($curl, \CURLOPT_USERAGENT, $_SERVER['HTTP_USER_AGENT']);
     }
 
-    $response = curl_exec($curl);
+    $response = \curl_exec($curl);
 
-    curl_close($curl);
+    \curl_close($curl);
 
 
     if(!empty($response)) {
@@ -142,18 +141,19 @@ class InstagramDownload {
   private function parse($HTML) {
     $rawTags = array();
 
-    preg_match_all("|<meta[^>]+=\"([^\"]*)\"[^>]" . "+content=\"([^\"]*)\"[^>]+>|i", $HTML, $rawTags, PREG_PATTERN_ORDER);
+    \preg_match_all('/<meta[^>]+="([^"]*)"[^>]' . '+content="([^"]*)"[^>]+>/i', $HTML, $rawTags);
 
     if(!empty($rawTags)) {
-      $multiValueTags = array_unique(array_diff_assoc($rawTags[1], array_unique($rawTags[1])));
+      $multiValueTags = \array_unique(\array_diff_assoc($rawTags[1], \array_unique($rawTags[1])));
 
       for($i=0; $i < sizeof($rawTags[1]); $i++) {
         $hasMultiValues = false;
         $tag = $rawTags[1][$i];
 
         foreach($multiValueTags as $mTag) {
-          if($tag == $mTag)
+          if($tag === $mTag) {
             $hasMultiValues = true;
+          }
         }
 
         if($hasMultiValues) {
