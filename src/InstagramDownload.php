@@ -86,7 +86,7 @@ class InstagramDownload {
   }
 
   /**
-   * @param null $url
+   * @param string $url
    *
    * @return mixed
    * @throws \InvalidArgumentException
@@ -97,7 +97,7 @@ class InstagramDownload {
       throw new \InvalidArgumentException('Invalid URL');
     }
     
-    $url['host'] = strtolower($url['host']);
+    $url['host'] = \strtolower($url['host']);
     
     if ($url['host'] !== self::INSTAGRAM_DOMAIN && $url['host'] !== 'www.' . self::INSTAGRAM_DOMAIN) {
       throw new \InvalidArgumentException('Entered URL is not an ' . self::INSTAGRAM_DOMAIN . ' URL.');
@@ -139,33 +139,34 @@ class InstagramDownload {
   }
 
   private function parse($HTML) {
-    $rawTags = array();
+    $raw_tags = [];
+    $this->meta_values = [];
 
-    \preg_match_all('/<meta[^>]+="([^"]*)"[^>]' . '+content="([^"]*)"[^>]+>/i', $HTML, $rawTags);
+    \preg_match_all('/<meta[^>]+="([^"]*)"[^>]' . '+content="([^"]*)"[^>]+>/i', $HTML, $raw_tags);
 
-    if(!empty($rawTags)) {
-      $multiValueTags = \array_unique(\array_diff_assoc($rawTags[1], \array_unique($rawTags[1])));
+    if(!empty($raw_tags)) {
+      $multi_value_tags = \array_unique(\array_diff_assoc($raw_tags[1], \array_unique($raw_tags[1])));
+      foreach ($raw_tags[1] as $i => $tag) {
+        $has_multiple_values = false;
 
-      for($i=0; $i < sizeof($rawTags[1]); $i++) {
-        $hasMultiValues = false;
-        $tag = $rawTags[1][$i];
-
-        foreach($multiValueTags as $mTag) {
-          if($tag === $mTag) {
-            $hasMultiValues = true;
+        foreach($multi_value_tags as $multi_tag) {
+          if($tag === $multi_tag) {
+            $has_multiple_values = true;
           }
         }
 
-        if($hasMultiValues) {
-          $this->meta_values[$tag][] = $rawTags[2][$i];
+        if($has_multiple_values) {
+          $this->meta_values[$tag][] = $raw_tags[2][$i];
         }
         else {
-          $this->meta_values[$tag] = $rawTags[2][$i];
+          $this->meta_values[$tag] = $raw_tags[2][$i];
         }
       }
     }
 
-    if (empty($this->meta_values)) { return false; }
+    if (empty($this->meta_values)) {
+      return false;
+    }
 
     return $this->meta_values;
   }
