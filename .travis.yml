@@ -12,3 +12,4 @@ before_script:
   - travis_retry composer install --prefer-source --no-interaction --dev
 script:
   - vendor/bin/phpunit
+  - vendor/bin/phpstan analyse src --level 7
