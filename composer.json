@@ -4,11 +4,11 @@
     "type": "library",
     "require": {
         "php": "^7.1",
-        "ext-curl": "*",
-        "phpstan/phpstan": "^0.9.0"
+        "ext-curl": "*"
     },
     "require-dev": {
-        "phpunit/phpunit": "^6.5"
+        "phpunit/phpunit": "^6.5",
+        "phpstan/phpstan": "^0.9.1"
     },
     "license": "MIT",
     "authors": [
