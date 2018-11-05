@@ -12,6 +12,7 @@ class InstagramDownload {
   private $meta_values = array();
   
   private const INSTAGRAM_DOMAIN = 'instagram.com';
+  private const PATH_VALIDATION = '/[p|tv]\/([-_A-Za-z0-9]{5,255})/i';
 
   /**
    * @param string $url
@@ -107,9 +108,9 @@ class InstagramDownload {
       throw new \InvalidArgumentException('No image or video found in this URL');
     }
 
-    $args = \explode('/', $url['path']);
-    if (!empty($args[1]) && $args[1] === 'p' && isset($args[2]{4}) && !isset($args[2]{255})) {
-      return $args[2];
+    preg_match(static::PATH_VALIDATION, $url['path'], $matches);
+    if (!empty($matches[1])) {
+      return $matches[1];
     }
 
     throw new \InvalidArgumentException('No image or video found in this URL');
