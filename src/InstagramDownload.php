@@ -118,6 +118,10 @@ class InstagramDownload {
   private function fetch($URI) {
     $curl = \curl_init($URI);
 
+    if (!$curl) {
+      throw new \RuntimeException('Unable to initialize curl.', 12);
+    }
+
     \curl_setopt($curl, \CURLOPT_FAILONERROR, true);
     \curl_setopt($curl, \CURLOPT_FOLLOWLOCATION, true);
     \curl_setopt($curl, \CURLOPT_RETURNTRANSFER, true);
