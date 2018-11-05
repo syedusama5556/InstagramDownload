@@ -10,6 +10,7 @@ class UrlFetcherTest extends TestCase {
     return [
       ['https://www.instagram.com/p/BYJNGnVAF-Q/', 'image'],
       ['https://www.instagram.com/p/BYI48JxniO3/', 'video'],
+      ['https://www.instagram.com/tv/BpzrDmjnlTm', 'video'],
     ];
   }
 

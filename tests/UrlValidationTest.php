@@ -34,6 +34,8 @@ class UrlValidationTest extends TestCase {
       ['https://instagram.com/p/dsadqdwq#dsadsa'],
       ['https://instagram.com/p/dsadqdwq?taken-by=23#sadsa'],
       ['https://www.instagram.com/p/BYJNGnVAF-Q/'],
+      ['https://www.instagram.com/tv/BpzrDmjnlTm/'],
+      ['https://www.instagram.com/tv/BpzrDmjnlTm'],
     ];
   }
 
