@@ -2,7 +2,9 @@
 
 [![Travis](https://travis-ci.org/Ayesh/InstagramDownload.svg?branch=2.x&style=flat-square)](https://travis-ci.org/Ayesh/InstagramDownload)
 
-Modernized version of your favorite Instagram Photo and video download helper class. If you are looking for the legacy version, [see here](https://github.com/Ayesh/InstagramDownload/tree/1.0). 
+Modernized version of your favorite Instagram Photo and video download helper class. If you are looking for the legacy version, [see here](https://github.com/Ayesh/InstagramDownload/tree/1.0).
+
+**Legacy version: This is a older version of this library and is no longer actively maintained. Consider using the [3.x branch](https://github.com/Ayesh/InstagramDownload/tree/3.x).**
 
 I wrote this class mainly for my [online Instagram photo and video downloader] [1], but I thought share this piece for your own extensions.
 
