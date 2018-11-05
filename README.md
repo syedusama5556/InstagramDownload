@@ -1,22 +1,22 @@
-# InstagramDownload - [Instagram photo and Video Downloader](https://downloadgram.com).
+# InstagramDownload - [Instagram photo and Video Downloader](https://downloadgram.com)
 
-[![Travis](https://travis-ci.org/Ayesh/InstagramDownload.svg?branch=2.x&style=flat-square)](https://travis-ci.org/Ayesh/InstagramDownload)
+[![Travis](https://travis-ci.org/Ayesh/InstagramDownload.svg?branch=3.x&style=flat-square)](https://travis-ci.org/Ayesh/InstagramDownload)
 
-Modernized version of your favorite Instagram Photo and video download helper class. If you are looking for the legacy version, [see here](https://github.com/Ayesh/InstagramDownload/tree/1.0). 
+Modernized version of your favorite Instagram Photo and video download helper class. If you are looking for the legacy version, [see here](https://github.com/Ayesh/InstagramDownload/tree/1.0). You can also try the [2.x branch](https://github.com/Ayesh/InstagramDownload/tree/2.x), which supports PHP 7.1.
 
-I wrote this class mainly for my [online Instagram photo and video downloader] [1], but I thought share this piece for your own extensions.
+I wrote this class mainly for my [online Instagram photo, video and IGTV downloader] [1], but I thought share this piece for your own extensions.
 
   - Validates Instagram URL (domain validation, URL path validation).
   - Uses OG properties to detect the image and video URL.
+  - Supports Instagram photos, videos, and Instagram TV videos
   - Verbose error reporting with proper exceptions.
   - Full unit tests
   - No dependencies other than PHP curl extension (which is most likely enabled by already)
   
 
 ### Requirements
-* PHP 7.1
-* CURL
-* Unicorn blood
+* PHP 7.2
+* Curl
 
 
 ### Thanks to:
@@ -67,7 +67,6 @@ catch (\RuntimeException $exception) {
 ```
 
 
-[1]:http://downloadgram.com
+[1]:https://downloadgram.com
 [2]:https://github.com/baj84/MetaData
-
 
