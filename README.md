@@ -36,6 +36,6 @@ $type = $client->type(); // Returns (string) 'image' or (string) video if an ima
 ```
 
 
-[1]:http://downloadgram.com
+[1]:https://downloadgram.com
 [2]:https://github.com/baj84/MetaData
 
