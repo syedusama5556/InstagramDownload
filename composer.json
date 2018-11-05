@@ -3,12 +3,12 @@
     "description": "Instagram image and video downloader with URL validation and cURL integration.",
     "type": "library",
     "require": {
-        "php": "^7.1",
+        "php": "^7.2",
         "ext-curl": "*"
     },
     "require-dev": {
-        "phpunit/phpunit": "^6.5 | ^7.0",
-        "phpstan/phpstan": "^0.9.1"
+        "phpunit/phpunit": "^7.4",
+        "phpstan/phpstan": "^0.10.5"
     },
     "license": "MIT",
     "authors": [
