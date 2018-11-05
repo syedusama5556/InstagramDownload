@@ -108,7 +108,7 @@ class InstagramDownload {
     }
 
     $args = \explode('/', $url['path']);
-    if (!empty($args[1]) && $args[1] === 'p' && isset($args[2][4]) && !isset($args[2][255])) {
+    if (!empty($args[1]) && $args[1] === 'p' && isset($args[2]{4}) && !isset($args[2]{255})) {
       return $args[2];
     }
 
