@@ -2,6 +2,8 @@
 
 How many times you tried download that booty pic or awesome #nofilter or #travel photo on Instagram but had to go through hoops to save that file? This class can give you the download URL of Instagram photos and videos.
 
+**Legacy version: This is a legacy version of this library and is no longer maintained. Consider using the [2.x branch](https://github.com/Ayesh/InstagramDownload/tree/2.x).**
+
 I wrote this class mainly for my [online Instagram photo and video downloader] [1], but I thought share this piece for your own extensions.
 
   - Validates Instagram URL (domain validation, URL path validation)
