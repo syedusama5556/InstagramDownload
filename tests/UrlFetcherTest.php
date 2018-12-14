@@ -34,10 +34,11 @@ class UrlFetcherTest extends TestCase {
     $dl_url = $dl->getDownloadUrl(true);
 
     $this->assertNotFalse(filter_var($url, FILTER_VALIDATE_URL));
-    $this->assertContains('?dl=1', $dl_url);
-    $this->assertNotContains('?dl=1', $url);
+    $this->assertContains('dl=1', $dl_url);
+    $this->assertNotContains('dl=1', $url);
 
     $file = file_get_contents($url);
+    //var_dump($file);
     $this->assertNotFalse($file);
   }
 
