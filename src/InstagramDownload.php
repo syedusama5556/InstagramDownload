@@ -58,6 +58,10 @@ class InstagramDownload {
     }
 
     if ($force_dl) {
+      if (strpos($this->download_url, '?') !== false) {
+        return $this->download_url . '&dl=1';
+      }
+
       return $this->download_url . '?dl=1';
     }
     return $this->download_url;
