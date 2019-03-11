@@ -4,13 +4,32 @@ declare(strict_types=1);
 namespace Ayesh\InstagramDownload;
 
 class InstagramDownload {
-  private $input_url;
+
+	/**
+	* @var string
+	*/
+	private $input_url;
+
+	/**
+	 * @var string
+	 */
   private $id;
-  
+
+	/**
+	 * @var string
+	 */
   private $type = 'image';
+
+	/**
+	 * @var string
+	 */
   private $download_url;
-  private $meta_values = array();
-  
+
+	/**
+	 * @var array
+	 */
+  private $meta_values = [];
+
   private const INSTAGRAM_DOMAIN = 'instagram.com';
 
   /**
