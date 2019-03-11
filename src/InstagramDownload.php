@@ -162,7 +162,7 @@ class InstagramDownload {
 
     \curl_close($curl);
 
-    if(!empty($response)) {
+    if(!empty($response) && \is_string($response)) {
       return $this->parse($response);
     }
 
