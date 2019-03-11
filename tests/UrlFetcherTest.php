@@ -11,6 +11,7 @@ class UrlFetcherTest extends TestCase {
       ['https://www.instagram.com/p/BYJNGnVAF-Q/', 'image'],
       ['https://www.instagram.com/p/BYI48JxniO3/', 'video'],
       ['https://www.instagram.com/tv/BpzrDmjnlTm', 'video'],
+      ['https://www.instagram.com/tempatbercakap/p/BsfhVbelqoW/?utm_source=ig_share_sheet&igshid=15ngmp8l2sqwj', 'video'],
     ];
   }
 

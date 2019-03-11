@@ -116,6 +116,10 @@ class InstagramDownload {
       return $args[2];
     }
 
+    if (!empty($args[2]) && ($args[2] === 'p' || $args[2] === 'tv') && !isset($args[3]{255}) && isset($args[3]{4}, $args[1]{4})) {
+	  return $args[3];
+	}
+
     throw new \InvalidArgumentException('No image or video found in this URL');
   }
 
