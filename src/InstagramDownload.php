@@ -66,17 +66,17 @@ class InstagramDownload {
   }
 
   /**
-   * @param bool $force_dl
+   * @param bool $force_download
    *
    * @return string
    * @throws \RuntimeException
    */
-  public function getDownloadUrl(bool $force_dl = TRUE): string {
+  public function getDownloadUrl(bool $force_download = true): string {
     if (!$this->download_url) {
       $this->process();
     }
 
-    if ($force_dl) {
+    if ($force_download) {
       if (strpos($this->download_url, '?') !== false) {
         return $this->download_url . '&dl=1';
       }
