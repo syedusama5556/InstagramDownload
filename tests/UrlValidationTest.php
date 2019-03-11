@@ -45,7 +45,7 @@ class UrlValidationTest extends TestCase {
   public function testUrlValidationFromDataStore(string $exception_message, string $source_url) {
     $this->expectExceptionMessage(\InvalidArgumentException::class);
     $this->expectExceptionMessage($exception_message);
-    $dl = new InstagramDownload($source_url);
+    new InstagramDownload($source_url);
   }
 
   /**
