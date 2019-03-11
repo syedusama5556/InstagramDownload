@@ -21,6 +21,7 @@ class UrlValidationTest extends TestCase {
       ['No image or video found in this URL', 'https://instagram.com/ayeshlive'],
       ['No image or video found in this URL', 'https://www.instagram.com/p/dsa'], // Post  argument min 5 chars.
       ['No image or video found in this URL', 'https://www.instagram.com/p/dsas'], // Post  argument min 5 chars.
+      ['No image or video found in this URL', 'https://www.instagram.com/x/Bu1H3GSgR7o/?utm_source=p/dsas12345'], // p/dsas12345 pattern in query.
     ];
   }
 
