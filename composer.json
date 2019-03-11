@@ -3,7 +3,7 @@
     "description": "Instagram image and video downloader with URL validation and cURL integration.",
     "type": "library",
     "require": {
-        "php": "^7.2",
+        "php": "^7.3",
         "ext-curl": "*"
     },
     "require-dev": {
