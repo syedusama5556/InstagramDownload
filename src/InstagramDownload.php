@@ -111,17 +111,17 @@ class InstagramDownload {
   /**
    * @param string $url
    *
-   * @return mixed
+   * @return string
    * @throws \InvalidArgumentException
    */
-  private function validateUrl($url) {
+  private function validateUrl(string $url): string {
     $url = \parse_url($url);
     if ($url === FALSE || empty($url['host'])) {
       throw new \InvalidArgumentException('Invalid URL');
     }
-    
+
     $url['host'] = \strtolower($url['host']);
-    
+
     if ($url['host'] !== self::INSTAGRAM_DOMAIN && $url['host'] !== 'www.' . self::INSTAGRAM_DOMAIN) {
       throw new \InvalidArgumentException('Entered URL is not an ' . self::INSTAGRAM_DOMAIN . ' URL.');
     }
@@ -129,7 +129,7 @@ class InstagramDownload {
     if (empty($url['path'])) {
       throw new \InvalidArgumentException('No image or video found in this URL');
     }
-    
+
     $args = \explode('/', $url['path']);
     if (!empty($args[1]) && ($args[1] === 'p' || $args[1] === 'tv') && isset($args[2]{4}) && !isset($args[2]{255})) {
       return $args[2];
@@ -142,8 +142,8 @@ class InstagramDownload {
     throw new \InvalidArgumentException('No image or video found in this URL');
   }
 
-  private function fetch($URI) {
-    $curl = \curl_init($URI);
+  private function fetch(string $url): array {
+    $curl = \curl_init($url);
 
     if (!$curl) {
       throw new \RuntimeException('Unable to initialize curl.', 12);
@@ -162,18 +162,18 @@ class InstagramDownload {
 
     \curl_close($curl);
 
-
     if(!empty($response)) {
       return $this->parse($response);
     }
+
     throw new \RuntimeException('Could not fetch data.');
   }
 
-  private function parse($HTML) {
+  private function parse(string $html): array {
     $raw_tags = [];
     $this->meta_values = [];
 
-    \preg_match_all('/<meta[^>]+="([^"]*)"[^>]' . '+content="([^"]*)"[^>]+>/i', $HTML, $raw_tags);
+    \preg_match_all('/<meta[^>]+="([^"]*)"[^>]' . '+content="([^"]*)"[^>]+>/i', $html, $raw_tags);
 
     if(!empty($raw_tags)) {
       $multi_value_tags = \array_unique(\array_diff_assoc($raw_tags[1], \array_unique($raw_tags[1])));
@@ -196,7 +196,7 @@ class InstagramDownload {
     }
 
     if (empty($this->meta_values)) {
-      return false;
+      return [];
     }
 
     return $this->meta_values;
