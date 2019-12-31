@@ -131,11 +131,11 @@ class InstagramDownload {
     }
 
     $args = \explode('/', $url['path']);
-    if (!empty($args[1]) && ($args[1] === 'p' || $args[1] === 'tv') && isset($args[2]{4}) && !isset($args[2]{255})) {
+    if (!empty($args[1]) && ($args[1] === 'p' || $args[1] === 'tv') && isset($args[2][4]) && !isset($args[2][255])) {
       return $args[2];
     }
 
-    if (!empty($args[2]) && ($args[2] === 'p' || $args[2] === 'tv') && !isset($args[3]{255}) && isset($args[3]{4}, $args[1]{4})) {
+    if (!empty($args[2]) && ($args[2] === 'p' || $args[2] === 'tv') && !isset($args[3][255]) && isset($args[3][4], $args[1][4])) {
 	  return $args[3];
 	}
 
