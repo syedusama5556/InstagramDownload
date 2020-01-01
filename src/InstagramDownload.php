@@ -80,17 +80,20 @@ class InstagramDownload {
     if (empty($values)) {
       throw new \RuntimeException('Error fetching information. Perhaps the post is private.', 3);
     }
+
     if (!empty($values['og:video'])) {
       $this->type = 'video';
       $this->download_url = $values['og:video'];
+      return;
     }
-    elseif (!empty($values['og:image'])) {
+
+    if (!empty($values['og:image'])) {
       $this->type = 'image';
       $this->download_url = $values['og:image'];
+      return;
     }
-    else {
-      throw new \RuntimeException('Error fetching information. Perhaps the post is private.', 4);
-    }
+
+	  throw new \RuntimeException('Error fetching information. Perhaps the post is private.', 4);
   }
 
   /**
