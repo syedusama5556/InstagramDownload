@@ -44,7 +44,7 @@ class InstagramDownload {
    * @throws \RuntimeException
    */
   public function getType(): string {
-    if (!$this->download_url) {
+    if (!isset($this->download_url)) {
       $this->process();
     }
     return $this->type;
@@ -57,7 +57,7 @@ class InstagramDownload {
    * @throws \RuntimeException
    */
   public function getDownloadUrl(bool $force_download = true): string {
-    if (!$this->download_url) {
+    if (!isset($this->download_url)) {
       $this->process();
     }
 
