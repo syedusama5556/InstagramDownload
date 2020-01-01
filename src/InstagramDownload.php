@@ -13,6 +13,9 @@ class InstagramDownload {
 
 	private string $download_url;
 
+	/**
+	 * @var array<string>
+	 */
 	private array $meta_values = [];
 
   private const INSTAGRAM_DOMAIN = 'instagram.com';
@@ -130,6 +133,11 @@ class InstagramDownload {
     throw new \InvalidArgumentException('No image or video found in this URL');
   }
 
+	/**
+	 * @param string $url
+	 *
+	 * @return array<string>
+	 */
   private function fetch(string $url): array {
     $curl = \curl_init($url);
 
@@ -157,6 +165,11 @@ class InstagramDownload {
     throw new \RuntimeException('Could not fetch data.');
   }
 
+	/**
+	 * @param string $html
+	 *
+	 * @return array<string>
+	 */
   private function parse(string $html): array {
     $raw_tags = [];
     $this->meta_values = [];
