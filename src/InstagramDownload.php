@@ -94,13 +94,13 @@ class InstagramDownload {
   }
 
   /**
-   * @param string $url
+   * @param string $raw_url
    *
    * @return string
    * @throws \InvalidArgumentException
    */
-  private function validateUrl(string $url): string {
-    $url = \parse_url($url);
+  private function validateUrl(string $raw_url): string {
+    $url = \parse_url($raw_url);
     if ($url === false || empty($url['host'])) {
       throw new \InvalidArgumentException('Invalid URL');
     }
