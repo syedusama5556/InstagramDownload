@@ -5,30 +5,15 @@ namespace Ayesh\InstagramDownload;
 
 class InstagramDownload {
 
-	/**
-	* @var string
-	*/
-	private $input_url;
+	private string $input_url;
 
-	/**
-	 * @var string
-	 */
-  private $id;
+	private string $id;
 
-	/**
-	 * @var string
-	 */
-  private $type = 'image';
+	private string $type = 'image';
 
-	/**
-	 * @var string
-	 */
-  private $download_url;
+	private string $download_url;
 
-	/**
-	 * @var array
-	 */
-  private $meta_values = [];
+	private array $meta_values = [];
 
   private const INSTAGRAM_DOMAIN = 'instagram.com';
 
