@@ -8,6 +8,9 @@ Instagram Photo and video download helper library.
  - [Legacy 1.0 pre-composer](https://github.com/Ayesh/InstagramDownload/tree/1.0)
  - [2.x branch with for PHP ^7.1](https://github.com/Ayesh/InstagramDownload/tree/2.x)
  - [3.x branch with for PHP ^7.2](https://github.com/Ayesh/InstagramDownload/tree/3.x)
+ 
+*Old and minimally supported versions*
+ - [4.x branch with for PHP ^7.3](https://github.com/Ayesh/InstagramDownload/tree/4.x)
 
 I wrote this class mainly for my [online Instagram photo, video and IGTV downloader](https://downloadgram.com), but I thought share this piece for your own extensions.
 
@@ -20,7 +23,7 @@ I wrote this class mainly for my [online Instagram photo, video and IGTV downloa
   
 
 ### Requirements
-* PHP 7.3
+* PHP 7.4
 * Curl
 
 
