@@ -38,7 +38,7 @@ class InstagramDownload {
   }
 
   /**
-   * Returns the type of data: image or video.
+   * Returns the type of data: `image` or `video`.
    *
    * @return string
    * @throws \RuntimeException
