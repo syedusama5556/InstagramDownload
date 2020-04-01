@@ -8,7 +8,7 @@ matrix:
 
 before_script:
   - composer self-update
-  - travis_retry composer install --prefer-source --no-interaction --dev
+  - travis_retry composer install --prefer-dist --no-interaction --dev
 script:
   - vendor/bin/phpunit
   - vendor/bin/phpstan analyse src -l max
