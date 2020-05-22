@@ -4,6 +4,9 @@
 
 Instagram Photo and video download helper library.
 
+**Update on May 22, 2020: Due to Instagram no longer allowing anonymous users to view photos/videos, this library is 
+currently not working. A new version 7 is in the works, but there is no ETA yet. Only IGTV videos are working now**
+
 *Old and unsupported versions*
  - [Legacy 1.0 pre-composer](https://github.com/Ayesh/InstagramDownload/tree/1.0)
  - [2.x branch with for PHP ^7.1](https://github.com/Ayesh/InstagramDownload/tree/2.x)
