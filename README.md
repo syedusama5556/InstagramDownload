@@ -4,6 +4,8 @@
 
 Instagram Photo and video download helper library.
 
+**New: Checkout [TikTokOff - TikTok video online downloader (no watermarks)](https://tiktokoff.com)**
+
 **Update on May 22, 2020: Due to Instagram no longer allowing anonymous users to view photos/videos, this library is 
 currently not working. A new version 7 is in the works, but there is no ETA yet. Only IGTV videos are working now**
 
